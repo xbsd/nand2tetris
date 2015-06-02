@@ -9,10 +9,63 @@
  *                        b[i] if sel == 1
  */
 
+/** Unix Script Used
+for i in `seq 15`; do echo "And(a=a[$i], b=Notsel, out=aAndNotSel$i);"; echo "And(a=b[$i], b=sel, out=bAndSel$i);"; echo "Or(a=aAndNotSel$i, b=bAndSel$i, out=out[$i]);"; done
+*/
+
 CHIP Mux16 {
     IN a[16], b[16], sel;
     OUT out[16];
 
     PARTS:
     // Put your code here:
+    Not(in=sel, out=Notsel);
+    And(a=a[0], b=Notsel, out=aAndNotSel0);
+    And(a=b[0], b=sel, out=bAndSel0);
+    Or(a=aAndNotSel0, b=bAndSel0, out=out[0]);
+    And(a=a[1], b=Notsel, out=aAndNotSel1);
+    And(a=b[1], b=sel, out=bAndSel1);
+    Or(a=aAndNotSel1, b=bAndSel1, out=out[1]);
+    And(a=a[2], b=Notsel, out=aAndNotSel2);
+    And(a=b[2], b=sel, out=bAndSel2);
+    Or(a=aAndNotSel2, b=bAndSel2, out=out[2]);
+    And(a=a[3], b=Notsel, out=aAndNotSel3);
+    And(a=b[3], b=sel, out=bAndSel3);
+    Or(a=aAndNotSel3, b=bAndSel3, out=out[3]);
+    And(a=a[4], b=Notsel, out=aAndNotSel4);
+    And(a=b[4], b=sel, out=bAndSel4);
+    Or(a=aAndNotSel4, b=bAndSel4, out=out[4]);
+    And(a=a[5], b=Notsel, out=aAndNotSel5);
+    And(a=b[5], b=sel, out=bAndSel5);
+    Or(a=aAndNotSel5, b=bAndSel5, out=out[5]);
+    And(a=a[6], b=Notsel, out=aAndNotSel6);
+    And(a=b[6], b=sel, out=bAndSel6);
+    Or(a=aAndNotSel6, b=bAndSel6, out=out[6]);
+    And(a=a[7], b=Notsel, out=aAndNotSel7);
+    And(a=b[7], b=sel, out=bAndSel7);
+    Or(a=aAndNotSel7, b=bAndSel7, out=out[7]);
+    And(a=a[8], b=Notsel, out=aAndNotSel8);
+    And(a=b[8], b=sel, out=bAndSel8);
+    Or(a=aAndNotSel8, b=bAndSel8, out=out[8]);
+    And(a=a[9], b=Notsel, out=aAndNotSel9);
+    And(a=b[9], b=sel, out=bAndSel9);
+    Or(a=aAndNotSel9, b=bAndSel9, out=out[9]);
+    And(a=a[10], b=Notsel, out=aAndNotSel10);
+    And(a=b[10], b=sel, out=bAndSel10);
+    Or(a=aAndNotSel10, b=bAndSel10, out=out[10]);
+    And(a=a[11], b=Notsel, out=aAndNotSel11);
+    And(a=b[11], b=sel, out=bAndSel11);
+    Or(a=aAndNotSel11, b=bAndSel11, out=out[11]);
+    And(a=a[12], b=Notsel, out=aAndNotSel12);
+    And(a=b[12], b=sel, out=bAndSel12);
+    Or(a=aAndNotSel12, b=bAndSel12, out=out[12]);
+    And(a=a[13], b=Notsel, out=aAndNotSel13);
+    And(a=b[13], b=sel, out=bAndSel13);
+    Or(a=aAndNotSel13, b=bAndSel13, out=out[13]);
+    And(a=a[14], b=Notsel, out=aAndNotSel14);
+    And(a=b[14], b=sel, out=bAndSel14);
+    Or(a=aAndNotSel14, b=bAndSel14, out=out[14]);
+    And(a=a[15], b=Notsel, out=aAndNotSel15);
+    And(a=b[15], b=sel, out=bAndSel15);
+    Or(a=aAndNotSel15, b=bAndSel15, out=out[15]);
 }
