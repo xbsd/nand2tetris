@@ -14,4 +14,7 @@ CHIP Inc16 {
 
     PARTS:
    // Put you code here:
+   Not16(a=in, out=n16);
+   Or16(a=in, b=n16, out=o16);
+   And16(a=o16, b=o16, sum=16
 }
