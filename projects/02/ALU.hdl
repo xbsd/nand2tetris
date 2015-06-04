@@ -63,6 +63,17 @@ CHIP ALU {
     Mux16(a=xandy, b=xaddy, sel=f, out=step5);
     Not16(in=step5, out=notstep5);
 
+    Mux16(a=step5, b=notstep5, sel=no, out[0..7]=control1);
+    Mux16(a=step5, b=notstep5, sel=no, out[8..15]=control2);
+    Mux16(a=step5, b=notstep5, sel=no, out[15]=lastcontrol);
     Mux16(a=step5, b=notstep5, sel=no, out=out);
+
+    Or8Way(in=control1, out=or81);
+    Or8Way(in=control2, out=or82);
+    Or(a=or81, b=or82, out=notzr);
+    Not(in=notzr, out=zr);
+
+    And(a=lastcontrol, b=true, out=ng);
+
 
 }
