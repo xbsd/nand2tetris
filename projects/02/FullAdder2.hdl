@@ -14,26 +14,40 @@ CHIP FullAdder {
 
     PARTS:
     // Put you code here:
-    HalfAdder(a=a, b=b, sum=s01, carry=c1);
-    Xor(a=s01, b=c, out=sum);
-
     Not(in=a, out=Nota);
     Not(in=b, out=Notb);
     Not(in=c, out=Notc);
 
-    And(a=Nota, b=b, out=t1);
+    And(a=Nota, b=Nota, out=t1);
     And(a=t1, b=c, out=s1);
 
-    And(a=a, b=Notb, out=t2);
-    And(a=t2, b=c, out=s2);
+    And(a=Nota, b=b, out=t2);
+    And(a=t2, b=Notc, out=s2);
 
-    And(a=a, b=b, out=t3);
+    And(a=a, b=Notb, out=t3);
     And(a=t3, b=Notc, out=s3);
 
     And(a=a, b=b, out=t4);
     And(a=t4, b=c, out=s4);
 
     Or(a=s1, b=s2, out=s12);
-    Or(a=s3, b=s4, out=s34);
-    Or(a=s12, b=s34, out=carry);
+    Or(a=s12, b=s3, out=s123);
+    Or(a=s123, b=s4, out=sum);
+
+    And(a=Nota, b=b, out=z1);
+    And(a=z1, b=c, out=c1);
+
+    And(a=a, b=Notb, out=z2);
+    And(a=z2, b=c, out=c2);
+
+    And(a=a, b=b, out=z3);
+    And(a=z3, b=Notc, out=c3);
+
+    And(a=a, b=b, out=z4);
+    And(a=z4, b=c, out=c4);
+
+    Or(a=c1, b=c2, out=c12);
+    Or(a=c12, b=c3, out=c123);
+    Or(a=c123, b=c4, out=carry);
+
 }
